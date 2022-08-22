@@ -37,3 +37,19 @@ function newElement() {    //функция создания нового эле
 
     li.appendChild(span);  // в конец тэга li добавляем переменную span
 }
+
+
+ //   поиск
+
+document.querySelector("div.search input[type=\"text\"]") //выбираю тэг input запихнул в div c id так как слушается самый первый input который найдётся в верстве
+        .addEventListener("input", (e) => {     // следим за изменением значений с помощью селектора input
+        [...document.querySelectorAll("ul li")].forEach(item => {   // затем деструктуризация массива чтобы собрать все введёные буквы и с помощью forEach перебераю массив, каждый елемент которого попадает в item
+         if (item.textContent.toLowerCase().includes(e.target.value.toLowerCase())) {   // для if else задаётся условие - выбирается весь текст из item c помощью textContent и  приравнивается к нижнему регистру. Затем с помощью метода .includes определяю содержит ли мой массив искомую комбинацию букв
+             item.style.display = "block";    // если да, тэгу присваивается стиль display:block
+         } else {
+       item.style.display = "none";  // если нет, dispalay:none
+     }
+   });
+ });
+
+  // фильтр
