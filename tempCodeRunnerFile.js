@@ -1,0 +1,1 @@
+let check = document.getElementsByClassName('checked')

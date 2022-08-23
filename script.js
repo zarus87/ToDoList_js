@@ -53,3 +53,19 @@ document.querySelector("div.search input[type=\"text\"]") //выбираю тэ�
  });
 
   // фильтр
+
+function sortCheck (e) {
+          // добавляем слушатель собыйтий  click к переменной list 
+      if(e.target.tagName === "checked") {  // если target это тэг li то...
+         ev.style.display = "block";  // ...приписываем тэгу classList checked
+      } else if(ev.target.tagName != "checked") {    // если цель click это тэг span  то ...
+         e.style.display = "none"    // ...в переменную помещаем родителя по кому юыло совершенно действие click 
+         
+      }
+  
+}  
+ 
+
+function sortUnCheck () {
+   
+}
