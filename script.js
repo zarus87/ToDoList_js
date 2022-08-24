@@ -35,7 +35,8 @@ function newElement() {    //функция создания нового эле
 
     span.appendChild(txt); // в конец тэга span добавляем переменную txt
 
-    li.appendChild(span);  // в конец тэга li добавляем переменную span
+    li.appendChild(span); 
+    console.log("live!")  // в конец тэга li добавляем переменную span
 }
 
 
@@ -54,18 +55,32 @@ document.querySelector("div.search input[type=\"text\"]") //выбираю тэ�
 
   // фильтр
 
-function sortCheck (e) {
-          // добавляем слушатель собыйтий  click к переменной list 
-      if(e.target.tagName === "checked") {  // если target это тэг li то...
-         ev.style.display = "block";  // ...приписываем тэгу classList checked
-      } else if(ev.target.tagName != "checked") {    // если цель click это тэг span  то ...
-         e.style.display = "none"    // ...в переменную помещаем родителя по кому юыло совершенно действие click 
-         
-      }
-  
-}  
- 
+function sortCheck () {
+  [...document.querySelectorAll("ul li")].forEach(item => { 
+    if (item.classList.contains('checked')) {   
+        item.style.display = "block";    
+    } else {
+        item.style.display = "none"
+   }
+  }  )
+}
 
 function sortUnCheck () {
-   
+  [...document.querySelectorAll("ul li")].forEach(item => { 
+    if (item.classList.contains('checked')) { 
+        item.style.display = "none";
+    } else {
+        item.style.display = "block"
+   }
+  }  )
+}
+
+function allAffairs () {
+  [...document.querySelectorAll("ul li")].forEach(item => {
+    if (item.classList.contains('checked')) { 
+        item.style.display = "block";
+    } else {
+        item.style.display = "block"
+   }
+  }  )
 }
