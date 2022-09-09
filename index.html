@@ -10,16 +10,20 @@
 <body>
     <div class="wrapper">
         <div class="header">
+            <div class="search"><input type="text" placeholder="поиск" ></div>
+
             <h1>Список дел</h1>
-           
+
             <input type="text" placeholder="Введите новое дело..." id="toDoEl">
             <span class="addBtn" onclick="newElement()">Добавить</span>
-            <div class="search"><input type="text" placeholder="поиск" ></div>
-            <p>
+            
             <span class="addBtn" onclick="sortCheck()">Показать только выполненые дела</span>
             <span class="addBtn" onclick="sortUnCheck()">Показать только не выполненые дела</span>
             <span class="addBtn" onclick="allAffairs()">Показать все дела</span>
-            </p>
+            <span class="addBtn" onclick="console.log(we)">Сортировка от А до Я</span>
+            <span class="addBtn" onclick="console.log(er)">Сортировка от Я до А</span>
+            <span class="addBtn" onclick="console.log(re)">Сортировка по очер>дности добавлению</span>
+            
         </div>
         <ul id="list">
     

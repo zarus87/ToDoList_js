@@ -1,1 +1,3 @@
-let check = document.getElementsByClassName('checked')
+var re = ['б', 'г', 'а', 'д', 'в']
+
+console.log(re.reverse())

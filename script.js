@@ -1,11 +1,21 @@
 let list = document.querySelector('ul'); // получаем доступ к тэгу ul
 
+// LocalStorage
+
+function toLocal() {
+  let todos = list.innerHTML;
+  localStorage.setItem('todos', todos);
+}
+
+ //
+
 list.addEventListener('click', function (ev) {  // добавляем слушатель собыйтий  click к переменной list 
     if(ev.target.tagName === "LI") {  // если target это тэг li то...
        ev.target.classList.toggle('checked');  // ...приписываем тэгу classList checked
     } else if(ev.target.tagName === "SPAN") {    // если цель click это тэг span  то ...
        let div = ev.target.parentNode;    // ...в переменную помещаем родителя по кому юыло совершенно действие click 
-       div.remove();  // удаляем переменную
+       div.remove();
+       toLocal()  // удаляем переменную
     }
 });
 
@@ -28,6 +38,10 @@ function newElement() {    //функция создания нового эле
     document.getElementById('toDoEl').value = ""; // устанавливаем значение поля ввода на пустое 
 
     let span = document.createElement('SPAN'); // создаём элемент с тэгом SPAN
+    
+  
+
+
 
     let txt = document.createTextNode("X"); // создаём текстовую заметку с текстом "Х"
 
@@ -35,9 +49,10 @@ function newElement() {    //функция создания нового эле
 
     span.appendChild(txt); // в конец тэга span добавляем переменную txt
 
-    li.appendChild(span); 
-    console.log("live!")  // в конец тэга li добавляем переменную span
+    li.appendChild(span);  // в конец тэга li добавляем переменную span
+    toLocal()
 }
+
 
 
  //   поиск
@@ -84,3 +99,50 @@ function allAffairs () {
    }
   }  )
 }
+
+//
+
+ if (localStorage.getItem('todos')) {
+  list.innerHTML = localStorage.getItem('todos');
+ }
+ // Сортировка
+
+ const re = ['б', 'г', 'а', 'д', 'в', 'е']
+
+ let er = [...re].sort(function(a,b) {
+  return b.localeCompare(a);
+});
+
+let we = [...re].sort(function(a,b) {
+  return a.localeCompare(b);
+});
+
+
+
+// function protiv() {
+//     let er = [...re].sort(function(a,b) {
+//     return b.localeCompare(a);
+//   });
+//   console.log(er) 
+// }
+
+
+// function po() {
+//     let we = [...re].sort(function(a,b) {
+//     return a.localeCompare(b);
+//   });
+//   console.log(we)
+  
+// }
+
+
+
+// console.log('оригинальный массив' + ' ' + re)
+
+// let jk = [...re].sort();
+
+// console.log('сортировка по алфавиту' + ' ' + jk) 
+
+// let hj = [...jk].reverse();
+
+// console.log('сортировка против алфавита' + ' ' + hj)
