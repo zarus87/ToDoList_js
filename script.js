@@ -1,5 +1,5 @@
 let list = document.querySelector('ul'); // получаем доступ к тэгу ul
-
+console.log(list)
 // LocalStorage
 
 function toLocal() {
@@ -8,7 +8,7 @@ function toLocal() {
 }
 
  //
-
+ 
 list.addEventListener('click', function (ev) {  // добавляем слушатель собыйтий  click к переменной list 
     if(ev.target.tagName === "LI") {  // если target это тэг li то...
        ev.target.classList.toggle('checked');  // ...приписываем тэгу classList checked
@@ -25,7 +25,9 @@ function newElement() {    //функция создания нового эле
 
     let inputValue = document.getElementById('toDoEl').value;   //получаем ссылку на элемент toDoEl с его значением!
 
-    let t = document.createTextNode(inputValue); // создаём текстовую заметку со значением inputValue, inputValue - введённый текст в поле input
+    gh.push(inputValue)
+
+    let t = document.createTextNode(fg()); // создаём текстовую заметку со значением inputValue, inputValue - введённый текст в поле input
 
     li.appendChild(t);  // добавляем к тэгу li переменную t в конец
 
@@ -38,10 +40,6 @@ function newElement() {    //функция создания нового эле
     document.getElementById('toDoEl').value = ""; // устанавливаем значение поля ввода на пустое 
 
     let span = document.createElement('SPAN'); // создаём элемент с тэгом SPAN
-    
-  
-
-
 
     let txt = document.createTextNode("X"); // создаём текстовую заметку с текстом "Х"
 
@@ -50,10 +48,16 @@ function newElement() {    //функция создания нового эле
     span.appendChild(txt); // в конец тэга span добавляем переменную txt
 
     li.appendChild(span);  // в конец тэга li добавляем переменную span
+
     toLocal()
 }
 
+const gh = [] // массив с текстом заметок
 
+function fg () {                   // функция для добавления последнего текста с массива
+  let er = gh[gh.length - 1]
+    return er
+}
 
  //   поиск
 
@@ -100,49 +104,30 @@ function allAffairs () {
   }  )
 }
 
-//
+function protiv() {
+  let er = [...gh].sort(function(a,b) {
+  return b.localeCompare(a);
+});
+toLocal();
+console.log(er) 
+}
+
+function po() {
+  let we = [...gh].sort(function(a,b) {
+  return a.localeCompare(b);
+});
+toLocal();
+console.log(we)
+
+}
+
+//   
 
  if (localStorage.getItem('todos')) {
   list.innerHTML = localStorage.getItem('todos');
  }
+
  // Сортировка
 
- const re = ['б', 'г', 'а', 'д', 'в', 'е']
-
- let er = [...re].sort(function(a,b) {
-  return b.localeCompare(a);
-});
-
-let we = [...re].sort(function(a,b) {
-  return a.localeCompare(b);
-});
 
 
-
-// function protiv() {
-//     let er = [...re].sort(function(a,b) {
-//     return b.localeCompare(a);
-//   });
-//   console.log(er) 
-// }
-
-
-// function po() {
-//     let we = [...re].sort(function(a,b) {
-//     return a.localeCompare(b);
-//   });
-//   console.log(we)
-  
-// }
-
-
-
-// console.log('оригинальный массив' + ' ' + re)
-
-// let jk = [...re].sort();
-
-// console.log('сортировка по алфавиту' + ' ' + jk) 
-
-// let hj = [...jk].reverse();
-
-// console.log('сортировка против алфавита' + ' ' + hj)
