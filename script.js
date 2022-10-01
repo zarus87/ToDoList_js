@@ -1,5 +1,5 @@
 let list = document.querySelector('ul'); // получаем доступ к тэгу ul
-console.log(list)
+
 // LocalStorage
 
 function toLocal() {
@@ -14,8 +14,8 @@ list.addEventListener('click', function (ev) {  // добавляем слуша
        ev.target.classList.toggle('checked');  // ...приписываем тэгу classList checked
     } else if(ev.target.tagName === "SPAN") {    // если цель click это тэг span  то ...
        let div = ev.target.parentNode;    // ...в переменную помещаем родителя по кому юыло совершенно действие click 
-       div.remove();
-       toLocal()  // удаляем переменную
+       div.remove();   // удаляем переменную
+       toLocal()  
     }
 });
 
@@ -49,7 +49,7 @@ function newElement() {    //функция создания нового эле
 
     li.appendChild(span);  // в конец тэга li добавляем переменную span
 
-    toLocal()
+   toLocal()
 }
 
 const gh = [] // массив с текстом заметок
@@ -57,6 +57,39 @@ const gh = [] // массив с текстом заметок
 function fg () {                   // функция для добавления последнего текста с массива
   let er = gh[gh.length - 1]
     return er
+}
+
+function rt () {
+  localStorage.clear()
+
+  list.innerHTML = "";
+
+  gh.forEach((Element) => {
+    
+    let li = document.createElement('li');
+
+    let t = document.createTextNode(Element);
+  
+    li.appendChild(t); 
+    document.getElementById('list').appendChild(li);
+  
+      let span = document.createElement('SPAN'); // создаём элемент с тэгом SPAN
+  
+      let txt = document.createTextNode("X"); // создаём текстовую заметку с текстом "Х"
+  
+      span.className = "close";  // Присваиваем переменной span css класс "close"
+  
+      span.appendChild(txt); // в конец тэга span добавляем переменную txt
+  
+      li.appendChild(span);  // в конец тэга li добавляем переменную span
+  
+     toLocal()
+  });
+
+
+ 
+
+  console.log('функция сработала!')
 }
 
  //   поиск
@@ -104,30 +137,76 @@ function allAffairs () {
   }  )
 }
 
+// Сортировка
+
 function protiv() {
   let er = [...gh].sort(function(a,b) {
   return b.localeCompare(a);
 });
-toLocal();
-console.log(er) 
+
+localStorage.clear()
+
+  list.innerHTML = " ";
+
+  er.forEach((Element) => {
+    let li = document.createElement('li');
+
+    let t = document.createTextNode(Element);
+  
+    console.log(t)
+  
+    li.appendChild(t); 
+    document.getElementById('list').appendChild(li);
+  
+      let span = document.createElement('SPAN'); // создаём элемент с тэгом SPAN
+  
+      let txt = document.createTextNode("X"); // создаём текстовую заметку с текстом "Х"
+  
+      span.className = "close";  // Присваиваем переменной span css класс "close"
+  
+      span.appendChild(txt); // в конец тэга span добавляем переменную txt
+  
+      li.appendChild(span);  // в конец тэга li добавляем переменную span
+  
+     toLocal()
+  });
 }
 
 function po() {
   let we = [...gh].sort(function(a,b) {
   return a.localeCompare(b);
 });
-toLocal();
-console.log(we)
 
+localStorage.clear()
+
+  list.innerHTML = " ";
+
+  we.forEach((Element) => {
+    let li = document.createElement('li');
+
+    let t = document.createTextNode(Element);
+  
+    console.log(t)
+  
+    li.appendChild(t); 
+    document.getElementById('list').appendChild(li);
+  
+      let span = document.createElement('SPAN'); // создаём элемент с тэгом SPAN
+  
+      let txt = document.createTextNode("X"); // создаём текстовую заметку с текстом "Х"
+  
+      span.className = "close";  // Присваиваем переменной span css класс "close"
+  
+      span.appendChild(txt); // в конец тэга span добавляем переменную txt
+  
+      li.appendChild(span);  // в конец тэга li добавляем переменную span
+  
+     toLocal()
+  });
 }
 
-//   
+// LocalStorage   
 
  if (localStorage.getItem('todos')) {
   list.innerHTML = localStorage.getItem('todos');
  }
-
- // Сортировка
-
-
-
